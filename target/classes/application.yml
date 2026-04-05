@@ -9,3 +9,7 @@ langchain4j:
       model-name: llama3
       temperature: 0.3
       timeout: 120s
+
+agent:
+  workspace:
+    path: ./workspace

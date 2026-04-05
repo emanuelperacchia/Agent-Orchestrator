@@ -2,7 +2,6 @@ package com.antigravity.orchestrator.console;
 
 import com.antigravity.orchestrator.service.OrchestratorService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -10,12 +9,12 @@ import java.util.Scanner;
 
 @Component
 @RequiredArgsConstructor
-@Slf4j
 public class ConsoleInterface implements CommandLineRunner {
 
     private final OrchestratorService orchestratorService;
 
     @Override
+    @SuppressWarnings("resource")
     public void run(String... args) throws Exception {
         System.out.println("======================================================");
         System.out.println("  ANTIGRAVITY AGENT ORCHESTRATOR - INTERACTIVE SHELL  ");
@@ -63,13 +62,15 @@ public class ConsoleInterface implements CommandLineRunner {
                     System.out.println("Error: Por favor escribe tu idea. Ejemplo: \\generate Crea una API de carrito de compras.");
                 } else {
                     String prompt = parts[1].trim();
-                    System.out.println("=> Activando equipo de agentes para el proyecto: " + prompt);
-                    try {
-                        orchestratorService.runProjectGeneration(prompt);
-                    } catch (Exception e) {
-                        System.err.println("Error inesperado en la ejecución de los agentes: " + e.getMessage());
-                        // Catch error so the console loop doesn't crash completely.
-                    }
+                    System.out.println("=> Activando equipo de agentes en segundo plano para el proyecto: " + prompt);
+                    java.util.concurrent.CompletableFuture.runAsync(() -> {
+                        try {
+                            orchestratorService.runProjectGeneration(prompt);
+                            System.out.print("\n[!] Proyecto finalizado. Presiona Enter o escribe un comando...\nantigravity> ");
+                        } catch (Exception e) {
+                            System.err.print("\n[X] Error inesperado en los agentes: " + e.getMessage() + "\nantigravity> ");
+                        }
+                    });
                 }
                 break;
             case "\\status":

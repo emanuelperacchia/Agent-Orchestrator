@@ -3,6 +3,7 @@ com\antigravity\orchestrator\agents\backend\BackendDeveloperAgent.class
 com\antigravity\orchestrator\events\TaskEvent.class
 com\antigravity\orchestrator\agents\backend\ProductManagerAiService.class
 com\antigravity\orchestrator\tools\FileWritingTool.class
+com\antigravity\orchestrator\tools\CommandLineExecutionTool.class
 com\antigravity\orchestrator\agents\backend\BackendDeveloperAiService.class
 com\antigravity\orchestrator\agents\backend\BackendQAAgent.class
 com\antigravity\orchestrator\agents\frontend\FrontendDeveloperAgent.class
@@ -14,10 +15,13 @@ com\antigravity\orchestrator\agents\backend\ProductManagerAgent.class
 com\antigravity\orchestrator\agents\frontend\FrontendQAAiService.class
 com\antigravity\orchestrator\agents\backend\BackendQAAiService.class
 com\antigravity\orchestrator\agents\frontend\FrontendQAAgent.class
+com\antigravity\orchestrator\tools\FileReadingTool.class
 com\antigravity\orchestrator\config\RagConfig.class
 com\antigravity\orchestrator\core\Task$TaskBuilder.class
 com\antigravity\orchestrator\core\Task.class
 com\antigravity\orchestrator\agents\frontend\UXUIAiService.class
+com\antigravity\orchestrator\tools\DirectoryListingTool.class
 com\antigravity\orchestrator\agents\frontend\FrontendDeveloperAiService.class
 com\antigravity\orchestrator\console\ConsoleInterface.class
+com\antigravity\orchestrator\security\WorkspaceValidator.class
 com\antigravity\orchestrator\core\Role.class
